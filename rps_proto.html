@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<script>
+
+
+function computerPlay(){
+  var rand = Math.random()*3;
+  if (rand<1) {
+    return "rock";
+  } else if (rand<2) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
+  }
+
+  function playRound(playerSelection, computerSelection){
+    if ( (playerSelection == computerSelection) ) {
+      return "its a tie!";
+    }
+    else if ( (playerSelection == "scissors" && computerSelection == "paper" ) ){
+      return "you win, behold the papercut! :) ";
+    }
+    else if ( (playerSelection == "rock" && computerSelection == "scissors" ) ) {
+      return "you win, mr balboa ! :) ";
+    } else if ((playerSelection == "paper" && computerSelection == "rock")) {
+      return "you win, happy spooning :)";
+    }
+    else if ( (computerSelection == "scissors" && playerSelection == "paper" ) ){
+      return "you lost, behold the papercut! :( ";
+    }
+    else if ( (computerSelection == "rock" && playerSelection == "scissors" ) ) {
+      return "you lost, mr balboa ! :( ";
+    } else if ((computerSelection == "paper" && playerSelection == "rock")) {
+      return "you lost, happy spooning :(";
+    }
+  }
+
+  var computerSelection = computerPlay();
+  var playerSelection = "rock";
+  console.log(playRound(playerSelection, computerSelection));
+
+</script>
+
+
+  </body>
+</html>
