@@ -8,43 +8,108 @@
 
 <script>
 
+var playerScore = 0;
+var computerScore = 0;
 
 function computerPlay(){
   var rand = Math.random()*3;
   if (rand<1) {
+    console.log("computer choose rock");
     return "rock";
   } else if (rand<2) {
+    console.log("computer choose paper");
     return "paper";
   } else {
+    console.log("computer choose scissors");
     return "scissors";
   }
   }
 
   function playRound(playerSelection, computerSelection){
     if ( (playerSelection == computerSelection) ) {
-      return "its a tie!";
+      console.log("its a tie!");
     }
     else if ( (playerSelection == "scissors" && computerSelection == "paper" ) ){
-      return "you win, behold the papercut! :) ";
+      console.log("you win, behold the papercut! :) ");
+      return  playerScore++;
     }
     else if ( (playerSelection == "rock" && computerSelection == "scissors" ) ) {
-      return "you win, mr balboa ! :) ";
+      console.log("you win, mr balboa ! :) ");
+      return  playerScore++;
     } else if ((playerSelection == "paper" && computerSelection == "rock")) {
-      return "you win, happy spooning :)";
+      console.log("you win, happy spooning :)");
+      return  playerScore++;
     }
     else if ( (computerSelection == "scissors" && playerSelection == "paper" ) ){
-      return "you lost, behold the papercut! :( ";
+      console.log("you lost, behold the papercut! :( ");
+      return computerScore++;
     }
     else if ( (computerSelection == "rock" && playerSelection == "scissors" ) ) {
-      return "you lost, mr balboa ! :( ";
+      console.log("you lost, mr balboa ! :( ");
+      return computerScore++;
     } else if ((computerSelection == "paper" && playerSelection == "rock")) {
-      return "you lost, happy spooning :(";
+      console.log("you lost, happy spooning :(");
+      return computerScore++;
     }
   }
 
-  var computerSelection = computerPlay();
-  var playerSelection = "rock";
-  console.log(playRound(playerSelection, computerSelection));
+  //console.log(playRound(playerSelection, computerSelection));
+
+  function game(){
+    playerScore = 0;
+    computerScore = 0;
+
+    var playerSelection = ((prompt("choose wisely")).toLowerCase()).trim();
+    var computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    var playerSelection = ((prompt("choose wisely")).toLowerCase()).trim();
+    var computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    var playerSelection = ((prompt("choose wisely")).toLowerCase()).trim();
+    var computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    var playerSelection = ((prompt("choose wisely")).toLowerCase()).trim();
+    var computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    var playerSelection = ((prompt("choose wisely")).toLowerCase()).trim();
+    var computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+
+    if (playerScore>computerScore) {
+      console.log("OMFG YOU VE JUST NAILED IT!   " + playerScore + " TO " + computerScore );
+    } else if (playerScore<computerScore){
+      console.log("DROIDS WILL RULE THE FUTURE ! YOU LOST   " + computerScore + " TO " + playerScore );
+    } else {
+      console.log("IT S A TIE !   " + playerScore + " - " + computerScore );
+    }
+  }
+
+
+function gameGoz() {
+  playerScore = 0;
+  computerScore = 0;
+
+  for (i=1 ; (playerScore+computerScore)<5 ; i++)
+  {
+    var playerSelection = ((prompt("choose wisely")).toLowerCase()).trim();
+    var computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+  }
+
+  if (playerScore>computerScore) {
+    console.log("OMFG YOU VE JUST NAILED IT!   " + playerScore + " TO " + computerScore );
+  } else
+  {
+    console.log("DROIDS WILL RULE THE FUTURE ! YOU LOST   " + computerScore + " TO " + playerScore );
+  }
+
+  var tekrar = confirm("wanna play again mate?");
+  (tekrar==true) ? gameGoz() : alert("fuck you m8");
+
+}
+
+
+
 
 </script>
 
